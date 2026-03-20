@@ -1,0 +1,106 @@
+<!--
+Author: Joseph Duren, Justin Hair
+WWD130
+3/18/2026
+
+Sources:
+[0] https://www.w3schools.com/html/html_images.asp - How to add in images
+[1] https://www.w3schools.com/howto/howto_css_searchbar.asp - Add's search bar
+[2] https://gemini.google.com/app - used to debugg an issue with images in code and
+touch up the title tag, it was in the wrong class.
+
+
+Credits:
+Sheet Music Collection Section - Created by: Justin Hair
+
+Github copilot was used to help merge code changes. 
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Sheets</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li> Home </li>
+            <li> About </li>
+            <li> Contact </li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="logo">
+            <h1> Good Sheets</h1>
+            <img src="images/logo.png" alt="logo">
+        </div>
+
+        <div class="hero-image">
+            <img src="images/hero_image.jpg" alt="hero_img">
+            <div class="topnav">
+                <input type="text" placeholder="Search..">
+            </div>
+        </div>
+
+        <div class="about_us">
+            <h2>Who We Are:</h2>
+            <br>
+            <p>Good Sheets isn't just another sheet music website; its a comapny commitmented to
+                musical integrity and craftsmanship-offering accurate,
+                beautifully engraved scores that
+                performers can trust, all in one centralized,
+                reliable digital library for music lovers everywhere.
+            </p>
+            <img src="images/piano_1.jpg" alt="hero_img">
+        </div>
+
+
+        <!-- Sheet Music Collection Section -->
+        <section id="sheet_music_collection">
+            <h1>Sheet Music Collection</h1>
+            <p>Welcome to our brand new sheet music collection!</p>
+
+            <article class="song_cards">
+                <img src="images/sheetmusic1.jpg" alt="Sheet music for Moritat">
+                <h2>Moritat</h2>
+                <p>A dramatic ballad with bold melodies and strong rhythmic drive.</p>
+            </article>
+
+            <article class="song_cards">
+                <img src="images/sheetmusic2.svg" alt="Sheet music for Jingles Bells">
+                <h2>Jingles Bells</h2>
+                <p>A cheerful holiday favorite that is fun and easy to play.</p>
+            </article>
+
+            <article class="song_cards">
+                <img src="images/sheetmusic3.png" alt="Sheet music for Do It Again">
+                <h2>Do It Again</h2>
+                <p>A smooth, upbeat tune with a catchy groove and repeating hook.</p>
+            </article>
+
+            <article class="song_cards">
+                <img src="images/sheetmusic4.jpg" alt="Sheet music for Walzer">
+                <h2>Walzer</h2>
+                <p>A graceful waltz in triple meter with flowing, dance-like motion.</p>
+            </article>
+        </section>
+
+        <div class="Testomials">
+            <img src="images/guy1.png" alt="guy1">
+            <p>I had a great experince with Good Sheet! They delvied high quality, musical peices perfect
+                for my concert!
+            </p>
+            <img src="images/girl1.png" alt="girl1">
+            <p>Good Sheets was amazing! They printed my cocnert msuic I need on time and quickly! 5/5 stars!</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Contact Info: goodsheets@gmail.com Phone Number: (123)-456-7890</p>
+    </footer>
+</body>
+</html>
