@@ -1,0 +1,38 @@
+/* 
+
+
+
+AI was used to remeber how to properly align elements as well as remembering other minor things.
+*/
+
+
+
+
+
+#page-title img {
+    max-height: 200px; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+#mission-statement {
+    max-width: 1200px; 
+    margin: 0px auto; 
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+}
+
+
+
+
+.profile-image {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    object-position: 50% -10px;
+    margin-bottom: 10px;
+
+}
+
