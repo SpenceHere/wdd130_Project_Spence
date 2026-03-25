@@ -2,19 +2,47 @@
 Created by: Justin Hair
 
 
-AI was used to remeber how to properly align elements as well as remembering other minor things.
+AI was used to remeber how to properly align elements as well as remembering other minor things such as the use of vars.
 */
+
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap");
+
+
+/* Main colors */
+:root {
+    --color-primary: #DEE5E5;
+    --color-secondary: #9DC5BB;
+    --color-accent-1: #17B890;
+    --color-accent-2: #5E807F;
+    --color-text: #243737;
+}
+
+
+/* Main fonts */
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+}
+
+h1, h2, h3 {
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-2);
+}
+
 
 
 
 #red-text {
-    color: red;
+    color: var(--color-accent-1);
 }
 
 #page-title {
     text-align: center; 
     margin: 0px 0; 
-    background-color: #f9f9f9; 
+    background-color: var(--color-secondary); 
 }
 
 #page-title img {
@@ -28,6 +56,7 @@ AI was used to remeber how to properly align elements as well as remembering oth
     margin: 0px auto; 
     padding: 20px; 
     border-radius: 8px; 
+    background-color: #ffffff;
 }
 
 
@@ -39,7 +68,7 @@ AI was used to remeber how to properly align elements as well as remembering oth
     border-radius: 8px; 
     display: grid; 
     grid-template-columns: 0.8fr 1.2fr;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 
 #our-story h2 {
@@ -69,6 +98,9 @@ AI was used to remeber how to properly align elements as well as remembering oth
     grid-template-columns: repeat(4, 1fr);
     column-gap: 15px;
     max-width: 1400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
 
 }
 
@@ -87,7 +119,7 @@ AI was used to remeber how to properly align elements as well as remembering oth
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     column-gap: 15px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     justify-items: center;
 }
 
@@ -117,7 +149,7 @@ AI was used to remeber how to properly align elements as well as remembering oth
 }
 
 main section {
-    border-top: 1px solid #e3e3e3;
-    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--color-secondary);
 }
 
