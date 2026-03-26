@@ -1,0 +1,64 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    columns: 4;
+    column-gap: 160px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #DEE5E5;
+    color: #17B890
+}
+h1 {
+    font-family: "Bebas Neue", sans-serif;
+    text-align: center;
+}
+h2 {
+    font-family: "Bebas Neue", sans-serif;
+    text-align: center;
+}
+p {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+body {
+    color: #9DC5BB
+}
+.music img {
+    width: 200px;
+    height: 300px;
+    display: block;
+    margin: auto; 
+}
+.logo img {
+    position: absolute;
+    top: 0;             
+    left: 0;            
+    width: 100px;
+    height: 100px;
+}
+.hero img {
+  display: block;
+  margin: auto;
+  border: 3px solid #5E807F;
+}
+.about_us img {
+    display: block;
+  margin: auto;
+  border: 3px solid #5E807F;
+}
+.profiles img {
+    width: 400px;
+    height: 200px;
+    display: block;
+  margin: auto;
+  border: 2px solid #000000;
+}
+footer {
+    border: 3px solid #5E807F;
+    color: #17B890;
+    background-color: #9DC5BB;
+}
