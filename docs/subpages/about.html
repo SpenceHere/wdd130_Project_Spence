@@ -11,10 +11,6 @@ AI was used to generate the text and images for:
 -->
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,13 +22,16 @@ AI was used to generate the text and images for:
 </head>
 <body>
     <!-- Header of page -->
-    <header>
-        <h1 id="red-text">FETCH REAL HEADER FROM index.html</h1>
-        <nav>
-            <ul>
-                <li> Home </li>
-                <li> About </li>
-                <li> Contact </li>
+    <header class="site-header">
+        <a class="brand" href="../index.html" aria-label="Good Sheets home page">
+            <img src="/docs/images/logo.png" alt="Good Sheets logo">
+            <span>Good Sheets</span>
+        </a>
+        <nav aria-label="Main navigation">
+            <ul class="site-nav">
+                <li><a href="../index.html">Home</a></li>
+                <li><a class="active" href="./about.html" aria-current="page">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -94,8 +93,12 @@ AI was used to generate the text and images for:
     </main>
 
     <!-- Footer of page -->
-    <footer>
-        <h1 id="red-text">FETCH FOOTER FROM index.html</h1>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p><strong>Good Sheets</strong></p>
+            <p>Email: <a href="mailto:goodsheets@gmail.com">goodsheets@gmail.com</a> | Phone: <a href="tel:+11234567890">(123)-456-7890</a></p>
+            <p class="footer-note">Accurate, high-quality sheet music for musicians at every level.</p>
+        </div>
     </footer>
 </body>
 </html>
