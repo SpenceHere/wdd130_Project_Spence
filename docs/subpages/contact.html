@@ -1,3 +1,8 @@
+<!--
+Created by: Benjamin Pagan
+
+AI assistence for filling in info boxes
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,74 +10,395 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Good Sheets</title>
   <link rel="icon" type="image/png" href="../images/logo.png" />
+  <style>
+    /* --- RESET & BASE --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #222;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+
+    /* --- COLOR VARIABLES --- */
+    :root {
+      --dark: #1e2330;
+      --text-muted: #666;
+      --border: #ddd;
+      --light-gray: #f4f6f8;
+      --button-gray: #7a8a99;
+    }
+
+
+    /* ================================
+       NAVIGATION BAR
+       ================================ */
+    nav {
+      display: flex;           /* logo + links side by side */
+      align-items: center;
+      padding: 14px 40px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+
+    /* Push nav links to the far right */
+    nav .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 24px;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: #8b6914;          /* brownish gold to match wireframe */
+      font-size: 0.95rem;
+    }
+
+    nav .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    nav img {
+      width: 30px;
+      height: 30px;
+    }
+
+    nav span {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+
+    /* ================================
+       PAGE TITLE SECTION
+       ================================ */
+    .page-title {
+      background-color: var(--light-gray);
+      text-align: center;
+      padding: 40px 40px 32px;
+    }
+
+    .page-title h1 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .page-title p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+
+    /* ================================
+       CONTACT FORM + INFO (side by side)
+       ================================ */
+    .contact-section {
+      display: flex;           /* puts form and info next to each other */
+      gap: 60px;
+      padding: 40px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* LEFT: form takes up more space */
+    .contact-form {
+      flex: 1.2;
+    }
+
+    .contact-form h2 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Each label sits above its input */
+    .contact-form label {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    /* Text inputs and the textarea share the same look */
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      margin-bottom: 16px;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+      resize: vertical;        /* lets user drag to resize vertically */
+    }
+
+    /* Submit button */
+    .contact-form button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--button-gray);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
+    .contact-form button:hover {
+      background-color: #5f6e7a;
+    }
+
+    /* RIGHT: contact info */
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info h2 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Remove default bullet points */
+    .contact-info ul {
+      list-style: none;
+    }
+
+    /* Each contact info item (phone, email, etc.) */
+    .contact-info li {
+      display: flex;           /* icon + text side by side */
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    /* Circle icon placeholder */
+    .contact-info li img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ccc;
+      flex-shrink: 0;          /* stops icon from squishing */
+    }
+
+    .contact-info li .info-text span {
+      display: block;
+      font-size: 0.88rem;
+    }
+
+    /* Second line of text is lighter */
+    .contact-info li .info-text span:last-child {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+
+    /* ================================
+       LOCATION / MAP SECTION
+       ================================ */
+    .location-section {
+      background-color: var(--light-gray);
+      padding: 32px 40px;
+    }
+
+    .location-section h2 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    /* Big gray map placeholder box */
+    .map-placeholder {
+      width: 100%;
+      height: 420px;
+      background-color: #c8d0da;
+      border: 1px solid #b0bac5;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+
+    /* ================================
+       FAQ SECTION
+       ================================ */
+    .faq-section {
+      padding: 48px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-section h2 {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* Each FAQ is a bordered card */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+
+    .faq-item p:first-child {
+      font-size: 0.92rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .faq-item p:last-child {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+
+    /* ================================
+       FOOTER
+       ================================ */
+    footer {
+      background-color: var(--dark);
+      color: #aaa;
+      padding: 48px 40px 24px;
+    }
+
+    /* 4 columns side by side */
+    .footer-columns {
+      display: flex;
+      gap: 40px;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;         /* wraps on small screens */
+    }
+
+    .footer-col p {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    /* Column headings */
+    .footer-col p strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+
+    .footer-col a:hover {
+      color: #fff;
+    }
+
+    /* Copyright line at the very bottom */
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 16px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAVIGATION BAR -->
   <nav>
-    <img src="logo-placeholder.png" alt="Good Sheets Logo" width="30" height="30" />
+    <img src="logo-placeholder.png" alt="Good Sheets Logo" />
     <span>Good Sheets</span>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
-  <hr />
-
   <!-- PAGE TITLE -->
-  <h1>Contact Us</h1>
-  <p>We'd love to hear from you. Reach out using the form below.</p>
+  <div class="page-title">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you. Reach out using the form below.</p>
+  </div>
 
   <hr />
 
   <!-- CONTACT FORM + CONTACT INFO SIDE BY SIDE -->
-  <div>
+  <div class="contact-section">
 
     <!-- LEFT: Contact Form -->
-    <div>
+    <div class="contact-form">
       <h2>Contact Form</h2>
-
       <form>
-        <label for="name">Name</label><br />
-        <input type="text" id="name" name="name" /><br /><br />
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
 
-        <label for="email">Email</label><br />
-        <input type="email" id="email" name="email" /><br /><br />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" />
 
-        <label for="subject">Subject</label><br />
-        <input type="text" id="subject" name="subject" /><br /><br />
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" />
 
-        <label for="message">Message</label><br />
-        <textarea id="message" name="message" rows="5" cols="40"></textarea><br /><br />
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
 
         <button type="submit">Send Message</button>
       </form>
     </div>
 
-    <!-- RIGHT: Contact Info List -->
-    <div>
+    <!-- RIGHT: Contact Info -->
+    <div class="contact-info">
       <h2>Contact Information</h2>
-
       <ul>
         <li>
-          <img src="icon-phone.png" alt="Phone icon" width="30" height="30" />
-          <span>Phone: (123) 456-7890</span><br />
-          <span>Mon - Fri, 9am - 5pm</span>
+          <img src="icon-phone.png" alt="Phone icon" />
+          <div class="info-text">
+            <span>Phone: (123) 456-7890</span>
+            <span>Mon - Fri, 9am - 5pm</span>
+          </div>
         </li>
         <li>
-          <img src="icon-email.png" alt="Email icon" width="30" height="30" />
-          <span>Email: hello@goodsheets.com</span><br />
-          <span>We reply within 24 hours</span>
+          <img src="icon-email.png" alt="Email icon" />
+          <div class="info-text">
+            <span>Email: hello@goodsheets.com</span>
+            <span>We reply within 24 hours</span>
+          </div>
         </li>
         <li>
-          <img src="icon-location.png" alt="Location icon" width="30" height="30" />
-          <span>Address: 123 Main St</span><br />
-          <span>Springfield, USA 12345</span>
+          <img src="icon-location.png" alt="Location icon" />
+          <div class="info-text">
+            <span>Address: 123 Main St</span>
+            <span>Springfield, USA 12345</span>
+          </div>
         </li>
         <li>
-          <img src="icon-hours.png" alt="Hours icon" width="30" height="30" />
-          <span>Hours: Mon - Fri</span><br />
-          <span>9:00am - 5:00pm</span>
+          <img src="icon-hours.png" alt="Hours icon" />
+          <div class="info-text">
+            <span>Hours: Mon - Fri</span>
+            <span>9:00am - 5:00pm</span>
+          </div>
         </li>
       </ul>
     </div>
@@ -82,65 +408,71 @@
   <hr />
 
   <!-- LOCATION / MAP SECTION -->
-  <h2>Our Location</h2>
-  <div>
-    <p>[ Map Placeholder ]</p>
+  <div class="location-section">
+    <h2>Our Location</h2>
+    <div class="map-placeholder">Map Placeholder</div>
   </div>
 
   <hr />
 
   <!-- FAQS SECTION -->
-  <h2>Frequently Asked Questions</h2>
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
 
-  <div>
-    <p><strong>How do I get started with Good Sheets?</strong></p>
-    <p>Getting started is easy. Simply create an account and follow the setup guide on your dashboard.</p>
-  </div>
+    <div class="faq-item">
+      <p>How do I get started with Good Sheets?</p>
+      <p>Getting started is easy. Simply create an account and follow the setup guide on your dashboard.</p>
+    </div>
 
-  <div>
-    <p><strong>What payment methods do you accept?</strong></p>
-    <p>We accept all major credit cards, PayPal, and bank transfers for annual plans.</p>
-  </div>
+    <div class="faq-item">
+      <p>What payment methods do you accept?</p>
+      <p>We accept all major credit cards, PayPal, and bank transfers for annual plans.</p>
+    </div>
 
-  <div>
-    <p><strong>Can I cancel my subscription at any time?</strong></p>
-    <p>Yes, you can cancel your subscription at any time from your account settings page.</p>
-  </div>
+    <div class="faq-item">
+      <p>Can I cancel my subscription at any time?</p>
+      <p>Yes, you can cancel your subscription at any time from your account settings page.</p>
+    </div>
 
-  <div>
-    <p><strong>How do I contact customer support?</strong></p>
-    <p>You can reach our support team using the contact form above or by emailing hello@goodsheets.com.</p>
+    <div class="faq-item">
+      <p>How do I contact customer support?</p>
+      <p>You can reach our support team using the contact form above or by emailing hello@goodsheets.com.</p>
+    </div>
   </div>
 
   <hr />
 
   <!-- FOOTER -->
   <footer>
-    <div>
-      <p><strong>Good Sheets</strong></p>
-      <p><a href="#">Home</a></p>
-      <p><a href="#">About</a></p>
-      <p><a href="#">Contact</a></p>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <p><strong>Good Sheets</strong></p>
+        <p><a href="#">Home</a></p>
+        <p><a href="#">About</a></p>
+        <p><a href="#">Contact</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Product</strong></p>
+        <p><a href="#">Features</a></p>
+        <p><a href="#">Pricing</a></p>
+        <p><a href="#">Changelog</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Resources</strong></p>
+        <p><a href="#">Documentation</a></p>
+        <p><a href="#">Blog</a></p>
+        <p><a href="#">Support</a></p>
+      </div>
+      <div class="footer-col">
+        <p><strong>Company</strong></p>
+        <p><a href="#">About Us</a></p>
+        <p><a href="#">Careers</a></p>
+        <p><a href="#">Privacy Policy</a></p>
+      </div>
     </div>
-    <div>
-      <p><strong>Product</strong></p>
-      <p><a href="#">Features</a></p>
-      <p><a href="#">Pricing</a></p>
-      <p><a href="#">Changelog</a></p>
+    <div class="footer-bottom">
+      &copy; 2026 Good Sheets. All rights reserved.
     </div>
-    <div>
-      <p><strong>Resources</strong></p>
-      <p><a href="#">Documentation</a></p>
-      <p><a href="#">Blog</a></p>
-      <p><a href="#">Support</a></p>
-    </div>
-    <div>
-      <p><strong>Company</strong></p>
-      <p><a href="#">About Us</a></p>
-      <p><a href="#">Careers</a></p>
-      <p><a href="#">Privacy Policy</a></p>
-    </div>
-    <p>&copy; 2026 Good Sheets. All rights reserved.</p>
   </footer>
 
 </body>
